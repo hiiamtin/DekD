@@ -39,8 +39,10 @@ public class ListPost extends Fragment{
         recyclerView.setLayoutManager(layoutManager);
         Adapter adapter = new Adapter(MainActivity.js,mCallback);
         recyclerView.setAdapter(adapter);
+        mCallback.updateAdapter(adapter);
         return view;
     }
+
 
 
 }

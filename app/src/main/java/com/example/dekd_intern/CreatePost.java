@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -67,7 +68,7 @@ public class CreatePost extends Fragment implements View.OnClickListener  {
     }
 
     private void saveJSON(JSONObject js) throws JSONException {
-        MainActivity.js.put(String.valueOf(MainActivity.js.length()),js);
+        MainActivity.js.put(js);
         mCallback.removeEvent();
     }
 }

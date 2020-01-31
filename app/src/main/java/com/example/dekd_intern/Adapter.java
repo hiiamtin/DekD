@@ -20,16 +20,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
 public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
-    private JSONObject mDataSet;
+    private JSONArray mDataSet;
     private Context context;
     private Callback callback;
 
-    public Adapter(JSONObject dataSet,Callback mCallback) {
+    public Adapter(JSONArray dataSet,Callback mCallback) {
         mDataSet = dataSet;
         callback = mCallback;
     }
@@ -55,8 +56,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
                 builder.setPositiveButton("ลบ", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         int x = holder.getAdapterPosition();
-                        mDataSet.remove(String.valueOf(x));
-                        MainActivity.js.remove(String.valueOf(x));
+                        mDataSet.remove(x);
                         notifyItemRemoved(x);
                     }
                 });
@@ -105,7 +105,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
         }
 
         public void setItem(int position) throws JSONException {
-            JSONObject js = mDataSet.getJSONObject(String.valueOf(position));
+            JSONObject js = mDataSet.getJSONObject(position);
             url = js.getString("url");
             textTitle.setText(js.getString("header"));
             textDescription.setText(js.getString("description"));

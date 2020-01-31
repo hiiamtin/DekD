@@ -3,7 +3,6 @@ package com.example.dekd_intern;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,13 +10,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.View;
-
-import org.json.JSONObject;
+import org.json.JSONArray;
 
 
 public class MainActivity extends AppCompatActivity implements Callback{
     FloatingActionButton fab;
-    public static JSONObject js;
+    public static JSONArray js;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements Callback{
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        js = new JSONObject();
+        js = new JSONArray();
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -63,8 +61,8 @@ public class MainActivity extends AppCompatActivity implements Callback{
     }
 
     @Override
-    public void updateList() {
-
+    public void updateAdapter(Adapter adapter) {
+        adapter.notifyDataSetChanged();
     }
 
     public void replaceFragment(Fragment fragment) {

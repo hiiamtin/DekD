@@ -7,6 +7,6 @@ public interface Callback {
 
     void someEvent(Fragment fragment);
     void removeEvent();
-    void updateList();
+    void updateAdapter(Adapter adapter);
 
 }
